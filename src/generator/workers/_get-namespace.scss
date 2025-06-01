@@ -1,21 +1,19 @@
 @use 'sass:map';
 @use 'sass:meta';
 
-$forko-config: null !default;
-
 /// Grab the property and value of one of the $forko-config utilities
 /// that the generator will generate a class for.
 ///
 /// @param {string} $namespace-type - Which type of object needs namespaced.  One of 'classes' or 'vars'
 ///
-@function get-namespace($namespace-type) {
+@function get-namespace($namespace-type, $config: null) {
   $namespace-defaults: (
     'prefix': '',
     'classes': true,
     'css-vars': false
   );
 
-  $namespace-settings: map.get($forko-config, 'namespace');
+  $namespace-settings: map.get($config, 'namespace');
 
   @if ($namespace-settings == null) {
     @return '';

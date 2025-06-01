@@ -17,7 +17,8 @@ $forko-config: null !default;
         $props,
         $prefix,
         $selector,
-        $is-breakpoint
+        $is-breakpoint,
+        $forko-config
       );
     }
   }

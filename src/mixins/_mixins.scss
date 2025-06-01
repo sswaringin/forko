@@ -1,10 +1,12 @@
 @use "sass:map";
 @use 'apply-utility';
 @use 'media-query';
-@use '../generator/workers/cycle';
 @use '../generator/workers/get-config-value';
 
 $forko-config: null !default;
+@use '../generator/workers/cycle' with (
+  $forko-config: $forko-config,
+);
 
 /// APPLY UTILITY MIXIN
 /// Grab the property and value of one of the $gorko-config utilities

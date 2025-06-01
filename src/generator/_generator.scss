@@ -6,7 +6,6 @@ $generate-css-vars: null !default;
 $generate-utility-classes: null !default;
 $css-vars: map.get($forko-config, 'css-vars');
 
-@use 'workers/cycle';
 @use 'workers/generate-css-vars';
 @use '../mixins/mixins';
 
