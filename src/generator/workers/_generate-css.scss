@@ -1,3 +1,5 @@
+@use 'get-namespace';
+
 /// GENERATE CSS MIXIN
 /// The final CSS generator that takes the process params and generates
 /// a CSS utility.
@@ -8,11 +10,8 @@
 /// @param {boolean} $use-css-vars - this is to tell generate-css to use either a value or a CSS Variable
 /// @param {string} $item-key - the key for items which is used for tying each CSS var up to the item value
 ///
-@import 'get-namespace';
-
 @mixin generate-css($selector, $property, $items, $use-css-vars, $item-key) {
-
-  $var-namespace: get-namespace('css-vars');
+  $var-namespace: get-namespace.get-namespace('css-vars');
 
   @each $key, $value in $items {
     #{'.' + $selector + '-' + $key} {

@@ -1,11 +1,11 @@
-@import 'config';
+@use 'config';
 
-@import '../gorko';
+@use '../forko.scss';
 
 /// A TESTING GROUND FOR FEATURES. MAKE SURE IT'S CLEAR AFTER HERE BEFORE PUSHING
 
 body {
   font-size: get-utility-value('text', '900');
   // background: get-config-value('color', 'blush');
-  @include apply-utility('color', 'blush');
+  // @include apply-utility('color', 'blush');
 }

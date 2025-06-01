@@ -1,13 +1,14 @@
 @use "sass:map";
-@use 'workers/cycle';
-@use 'workers/generate-css-vars';
-@use '../mixins/mixins';
 
 /// Accept config as a parameter, with fallback to default
 $forko-config: null !default;
 $generate-css-vars: null !default;
 $generate-utility-classes: null !default;
 $css-vars: map.get($forko-config, 'css-vars');
+
+@use 'workers/cycle';
+@use 'workers/generate-css-vars';
+@use '../mixins/mixins';
 
 /// Run the vars generator, regardless of whether they are defined,
 /// but only if they are enabled

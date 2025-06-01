@@ -1,9 +1,11 @@
+@use 'sass:map';
+
 /// BASE SIZE
 /// All calculations are based on this. It’s recommended that
 /// you keep it at 1rem because that is the root font size. You
 /// can set it to whatever you like and whatever unit you like.
 ///
-$gorko-base-size: 1rem;
+$forko-base-size: 1rem;
 
 /// SIZE SCALE
 /// This is a Major Third scale that powers all the utilities that
@@ -11,48 +13,47 @@ $gorko-base-size: 1rem;
 /// calcuated off the base size, so change that and cascade across
 /// your whole project.
 ///
-$gorko-size-scale: (
-  '300': $gorko-base-size * 0.8,
-  '400': $gorko-base-size,
-  '500': $gorko-base-size * 1.25,
-  '600': $gorko-base-size * 1.6,
-  '700': $gorko-base-size * 2,
-  '900': $gorko-base-size * 3
+$forko-size-scale: (
+  '300': $forko-base-size * 0.8,
+  '400': $forko-base-size,
+  '500': $forko-base-size * 1.25,
+  '600': $forko-base-size * 1.6,
+  '700': $forko-base-size * 2,
+  '900': $forko-base-size * 3
 );
 
 /// COLORS
 /// Colors are shared between backgrounds and text by default.
 /// You can also use them to power borders, fills or shadows, for example.
 ///
-$gorko-colors: (
+$forko-colors: (
   'dark': #1a1a1a,
   'light': #f3f3f3,
   'blush': pink
 );
 
 $light-colors: (
-  'text': map-get($gorko-colors, 'dark'),
-  'bg': map-get($gorko-colors, 'light')
+  'text': map.get($forko-colors, 'dark'),
+  'bg': map.get($forko-colors, 'light')
 );
 
 $dark-colors: (
-  'text': map-get($gorko-colors, 'light'),
-  'bg': map-get($gorko-colors, 'dark')
+  'text': map.get($forko-colors, 'light'),
+  'bg': map.get($forko-colors, 'dark')
 );
-
 
 /// CORE CONFIG
 /// This powers everything from utility class generation to breakpoints
 /// to enabling/disabling pre-built components/utilities.
 ///
-$gorko-config: (
+$forko-config: (
   'namespace': (
     'prefix': 'my-prefix-',
     'classes': true,
     'css-vars': true
   ),
   'css-vars': (
-    'color': $gorko-colors,
+    'color': $forko-colors,
     'themes': (
       'default': (
         'tokens': (
@@ -103,42 +104,42 @@ $gorko-config: (
     'property': 'font-family'
   ),
   'gap-top': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'margin-top'
   ),
   'gap-right': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'margin-right'
   ),
   'gap-bottom': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'margin-bottom'
   ),
   'gap-left': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'margin-left'
   ),
   'pad-top': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'padding-top'
   ),
   'pad-right': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'padding-right'
   ),
   'pad-bottom': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'padding-bottom'
   ),
   'pad-left': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'padding-left'
   ),
@@ -154,7 +155,7 @@ $gorko-config: (
     'property': 'z-index'
   ),
   'text': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'responsive',
     'property': 'font-size'
   ),
@@ -170,9 +171,9 @@ $gorko-config: (
   'width': (
     'items': (
       'full': '100%',
-      'half': percentage(1/2),
-      'quarter': percentage(1/4),
-      'third': percentage(1/3)
+      'half': calc(1 / 2),
+      'quarter': calc(1 / 4),
+      'third': calc(1 / 3)
     ),
     'output': 'responsive',
     'property': 'width'
