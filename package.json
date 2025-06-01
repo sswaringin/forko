@@ -1,26 +1,26 @@
 {
-  "name": "gorko",
+  "name": "forko",
   "version": "0.9.1",
   "description": "A tiny Sass token class generator.",
-  "main": "gorko.scss",
+  "main": "forko.scss",
   "dependencies": {
-    "sass": "^1.26.5"
+    "sass": "^1.89.0"
   },
   "scripts": {
-    "test": "npx sass gorko.scss tmp/gorko.css && npx sass test/test.scss tmp/test.css"
+    "test": "npx sass forko.scss tmp/forko.css && npx sass test/test.scss tmp/test.css"
   },
   "devDependencies": {
     "prettier": "^2.0.5"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hankchizljaw/gorko.git"
+    "url": "https://github.com/sswaringin/forko.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hankchizljaw/gorko/issues"
+    "url": "https://github.com/sswaringin/forko/issues"
   },
-  "homepage": "https://github.com/hankchizljaw/gorko#readme"
+  "homepage": "https://github.com/sswaringin/forko#readme"
 }

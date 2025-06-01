@@ -1,16 +1,16 @@
-# Gorko
+# Forko (an update to the original project, Gorko)
 
-A tiny, Sass-powered design-token led utility class generator, with handy helpers, that helps you to power your front-ends with a single source of truth.
+A tiny, Sass-powered, design-token led, utility class generator (with handy helpers) that helps you to power your frontends with a single source of truth.
 
 ## Table of contents
 
-- [Gorko](#gorko)
+- [Forko](#forko)
   - [Getting started](#getting-started)
   - [Configuration](#configuration)
     - [Base size (optional)](#base-size--optional-)
     - [Size scale (optional)](#size-scale--optional-)
     - [Colors (optional)](#colors--optional-)
-    - [Gorko config (required)](#gorko-config--required-)
+    - [Forko config (required)](#forko-config--required-)
     - [Breakpoints](#breakpoints)
   - [Utility Class Generator](#utility-class-generator)
     - [Example outputs](#example-outputs)
@@ -41,19 +41,19 @@ A tiny, Sass-powered design-token led utility class generator, with handy helper
 
 ## Getting started
 
-First up, install Gorko:
+First up, install Forko:
 
 ```bash
-npm install gorko
+npm install forko
 ```
 
-In your Sass (SCSS in this case), import Gorko like so:
+In your Sass (SCSS in this case), import Forko like so:
 
 ```scss
-@import '../path/to/your/node_modules/gorko/gorko.scss';
+@import '../path/to/your/node_modules/forko/forko.scss';
 ```
 
-This will generate utility classes based on the default configuration. To configure it for yourself, take this default, and create your own. Once it is created **import your config before Gorko**, like this:
+This will generate utility classes based on the default configuration. To configure it for yourself, take this default, and create your own. Once it is created **import your config before Forko**, like this:
 
 ```bash
 @import 'config';
@@ -69,7 +69,7 @@ This is the default configuration. It is recommended that you use it as your bas
 /// you keep it at 1rem because that is the root font size. You
 /// can set it to whatever you like and whatever unit you like.
 ///
-$gorko-base-size: 1rem;
+$forko-base-size: 1rem;
 
 /// SIZE SCALE
 /// This is a Major Third scale that powers all the utilities that
@@ -77,20 +77,20 @@ $gorko-base-size: 1rem;
 /// calcuated off the base size, so change that and cascade across
 /// your whole project.
 ///
-$gorko-size-scale: (
-  '300': $gorko-base-size * 0.8,
-  '400': $gorko-base-size,
-  '500': $gorko-base-size * 1.25,
-  '600': $gorko-base-size * 1.6,
-  '700': $gorko-base-size * 2,
-  '900': $gorko-base-size * 3
+$forko-size-scale: (
+  '300': $forko-base-size * 0.8,
+  '400': $forko-base-size,
+  '500': $forko-base-size * 1.25,
+  '600': $forko-base-size * 1.6,
+  '700': $forko-base-size * 2,
+  '900': $forko-base-size * 3
 );
 
 /// COLORS
 /// Colors are shared between backgrounds and text by default.
 /// You can also use them to power borders, fills or shadows, for example.
 ///
-$gorko-colors: (
+$forko-colors: (
   'dark': #1a1a1a,
   'light': #f3f3f3
 );
@@ -99,14 +99,14 @@ $gorko-colors: (
 /// This powers everything from utility class generation to breakpoints
 /// to enabling/disabling pre-built components/utilities.
 ///
-$gorko-config: (
+$forko-config: (
   'bg': (
-    'items': $gorko-colors,
+    'items': $forko-colors,
     'output': 'standard',
     'property': 'background'
   ),
   'color': (
-    'items': $gorko-colors,
+    'items': $forko-colors,
     'output': 'standard',
     'property': 'color'
   ),
@@ -128,42 +128,42 @@ $gorko-config: (
     'property': 'font-family'
   ),
   'gap-top': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'margin-top'
   ),
   'gap-right': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'margin-right'
   ),
   'gap-bottom': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'margin-bottom'
   ),
   'gap-left': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'margin-left'
   ),
   'pad-top': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'padding-top'
   ),
   'pad-right': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'padding-right'
   ),
   'pad-bottom': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'padding-bottom'
   ),
   'pad-left': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'standard',
     'property': 'padding-left'
   ),
@@ -179,7 +179,7 @@ $gorko-config: (
     'property': 'z-index'
   ),
   'text': (
-    'items': $gorko-size-scale,
+    'items': $forko-size-scale,
     'output': 'responsive',
     'property': 'font-size'
   ),
@@ -212,13 +212,13 @@ $gorko-config: (
 
 ### Base size (optional)
 
-`$gorko-base-size`
+`$forko-base-size`
 
 The base size for the size ratio calculations. It is only required for the default configuration.
 
 ### Size scale (optional)
 
-`$gorko-size-scale`
+`$forko-size-scale`
 
 This takes the base size and by default, generates a **major third** size scale. This can be set to whatever scale you like.
 
@@ -226,17 +226,17 @@ If this is not set, the `get-size` function will use the default configuration.
 
 ### Colors (optional)
 
-`$gorko-colors`
+`$forko-colors`
 
 A collection of key/value pairs that by default, generate text and background colour utilities.
 
 If this is not set, the `get-color` function will use the default configuration.
 
-### Gorko config (required)
+### Forko config (required)
 
-`$gorko-config`
+`$forko-config`
 
-🚨 Without this set, Gorko won’t work. 🚨
+🚨 Without this set, Forko won’t work. 🚨
 
 It contains all of the utility class definitions and breakpoint definitions that the generator and mixins use.
 
@@ -244,7 +244,7 @@ You can add as many or as little utility class definitions as you like—likewis
 
 ### Breakpoints
 
-The `breakpoints` map in `$gorko-config` defines media queries for the utility class generator. By default, the are set as follows:
+The `breakpoints` map in `$forko-config` defines media queries for the utility class generator. By default, the are set as follows:
 
 ```scss
 'breakpoints': (
@@ -258,7 +258,7 @@ You can add as many or as little of these as you like and call them whatever you
 
 ## Utility Class Generator
 
-The utility class generator loops through `$gorko-config` looking for items that have a valid utility class structure. The following structure is required to generate a utility class:
+The utility class generator loops through `$forko-config` looking for items that have a valid utility class structure. The following structure is required to generate a utility class:
 
 ```scss
 'width':('items':('full':'100%','half': '50%'
@@ -270,7 +270,7 @@ The utility class generator loops through `$gorko-config` looking for items that
 
 The first key is the name of the utility and that contains a Sass map. Inside that map, you need to have the following:
 
-- `items`: a map of key/value pairs which link a utility class to a CSS property’s value. If you want to use CSS Custom Properties, this should be the string key, referencing the `'css-vars'` `$gorko-config` group that you want to use
+- `items`: a map of key/value pairs which link a utility class to a CSS property’s value. If you want to use CSS Custom Properties, this should be the string key, referencing the `'css-vars'` `$forko-config` group that you want to use
 - `output`: this must be `responsive` or `standard`. If you set it to `responsive`, it will generate the same utility class for **every breakpoint that is defined**.
 - `property`: the [CSS property](https://css-tricks.com/almanac/properties/) that this utility controls.
 
@@ -332,20 +332,20 @@ If we set the `output` to be `responsive`, with the default `breakpoints` define
 
 ## Generating Utility Classes On Demand
 
-The default behaviour of Gorko is to generate utility classes, but in the spirit of being as flexible as possible, you can stop it doing that by setting `$generate-utility-classes` to `false` when you pull Gorko into your project, like this:
+The default behaviour of Forko is to generate utility classes, but in the spirit of being as flexible as possible, you can stop it doing that by setting `$generate-utility-classes` to `false` when you pull Forko into your project, like this:
 
 ```scss
 $generate-utility-classes: false;
 @import 'config';
-@import '../path/to/your/node_modules/gorko/gorko.scss';
+@import '../path/to/your/node_modules/forko/forko.scss';
 ```
 
-We might want to generate those utility classes later on in the CSS, though, so we use the `generate-utility-classes()` mixin anywhere **after** Gorko has been pulled in.
+We might want to generate those utility classes later on in the CSS, though, so we use the `generate-utility-classes()` mixin anywhere **after** Forko has been pulled in.
 
 ```scss
 $generate-utility-classes: false;
 @import 'config';
-@import '../path/to/your/node_modules/gorko/gorko.scss';
+@import '../path/to/your/node_modules/forko/forko.scss';
 
 // Standard authored CSS
 body {
@@ -359,16 +359,16 @@ body {
 
 ## Using CSS Custom Properties
 
-**[See a demo repo](https://github.com/andy-piccalilli/gorko-custom-props-demo)**
+**[See a demo repo](https://github.com/andy-piccalilli/forko-custom-props-demo)**
 
-You might want to use CSS Custom Properties instead of static references to tokens. To do so with Gorko, you need to make a couple of adjustments to your `$gorko-config`.
+You might want to use CSS Custom Properties instead of static references to tokens. To do so with Forko, you need to make a couple of adjustments to your `$forko-config`.
 
 Firstly, at the top, you need to add a `css-vars` group which has a **key** and a value, which should be a map of tokens.
 
 ```scss
-$gorko-config: (
+$forko-config: (
   'css-vars': (
-    'color': $gorko-colors,
+    'color': $forko-colors,
     'weight': (
       'bold': 700,
       'black': 900
@@ -377,7 +377,7 @@ $gorko-config: (
 );
 ```
 
-In this example, we have defined a `'color'` group which uses `$gorko-colors`, but also a `'weight'` group where we have defined key value pairs, just like we do in the utility class generator.
+In this example, we have defined a `'color'` group which uses `$forko-colors`, but also a `'weight'` group where we have defined key value pairs, just like we do in the utility class generator.
 
 This will now generate a collection of CSS Custom properties like this:
 
@@ -413,41 +413,41 @@ Now, the background utility classes will look like this:
 }
 ```
 
-**Note**: You can use a combination of CSS Custom Properties _and_ static references to tokens for different utility classes. Gorko is flexible enough to let you do what works for you and your team.
+**Note**: You can use a combination of CSS Custom Properties _and_ static references to tokens for different utility classes. Forko is flexible enough to let you do what works for you and your team.
 
-When you enable CSS custom properties, Gorko will generate the `:root` blocks for you, but sometimes, you might want those `:root` blocks not to be rendered. This is common if you are generating more than one CSS bundle. **To disable the generation of CSS Custom Property blocks, set `$generate-css-vars = false;`, before you import Gorko, just like [generating utility classes on demand](#generating-utility-classes-on-demand)**.
+When you enable CSS custom properties, Forko will generate the `:root` blocks for you, but sometimes, you might want those `:root` blocks not to be rendered. This is common if you are generating more than one CSS bundle. **To disable the generation of CSS Custom Property blocks, set `$generate-css-vars = false;`, before you import Forko, just like [generating utility classes on demand](#generating-utility-classes-on-demand)**.
 
 ### Using themes
 
 **This feature requires Custom Properties**
 
-A handy part of the Custom Property support with Gorko is the ability to generate multiple themes. These themes can power dark mode with `@media (prefers-color-scheme: dark)` or be prefixed with whatever scheme you like.
+A handy part of the Custom Property support with Forko is the ability to generate multiple themes. These themes can power dark mode with `@media (prefers-color-scheme: dark)` or be prefixed with whatever scheme you like.
 
 Let’s say you want a dark mode that [both honours the user’s preference, via a media query, and also, can be toggled](https://piccalil.li/tutorial/create-a-user-controlled-dark-or-light-mode/). The toggle version could use `[data-theme="dark"]` as its prefix. We’ll generate a default light theme too.
 
 First, we set some values.
 
 ```scss
-$gorko-colors: (
+$forko-colors: (
   'dark': #1a1a1a,
   'light': #f3f3f3
 );
 
 $light-colors: (
-  'text': map-get($gorko-colors, 'dark'),
-  'bg': map-get($gorko-colors, 'light')
+  'text': map-get($forko-colors, 'dark'),
+  'bg': map-get($forko-colors, 'light')
 );
 
 $dark-colors: (
-  'text': map-get($gorko-colors, 'light'),
-  'bg': map-get($gorko-colors, 'dark')
+  'text': map-get($forko-colors, 'light'),
+  'bg': map-get($forko-colors, 'dark')
 );
 ```
 
-Then, we tweak `$gorko-config`.
+Then, we tweak `$forko-config`.
 
 ```scss
-$gorko-config: (
+$forko-config: (
   'css-vars': (
     'themes': (
       'default': (
@@ -523,10 +523,10 @@ You can generate as many themes with whatever prefix you can think up!
 You could also [generate color utility classes using the generator](#utility-class-generator) that use these custom properties.
 
 ## Namespaces
-Gorko supports 'namespacing' both the generated class and variable names by allowing you to specify a prefix.  This is done using the `namespace` map within `$gorko-config`.  The default `namespace` config looks like this:
+Forko supports 'namespacing' both the generated class and variable names by allowing you to specify a prefix.  This is done using the `namespace` map within `$forko-config`.  The default `namespace` config looks like this:
 
 ````scss
-$gorko-config: (
+$forko-config: (
   'namespace': (
     'prefix': '',             // string
     'classes': true,          // boolean or string
@@ -549,7 +549,7 @@ Accepts either a boolean value indicating that the `prefix` should be applied to
 Minimal Configuration: This configuration would prepend `my-` to the beginning of generated utility classes, but would not modify css variable names:
 
 ````scss
-$gorko-config: (
+$forko-config: (
   'namespace': (
     'prefix': 'my-'
   )
@@ -559,7 +559,7 @@ $gorko-config: (
 Everything prefixed:  This configuration applies the prefix to both utility classes and css variables:
 
 ````scss
-$gorko-config: (
+$forko-config: (
   'namespace': (
     'prefix': 'my-',
     'css-vars': true
@@ -570,7 +570,7 @@ $gorko-config: (
 Separate prefixes:  This configuration gives you the ability to provide different prefixes for utility classes and css variables:
 
 ````scss
-$gorko-config: (
+$forko-config: (
   'namespace': (
     'classes': 'my-class-',
     'css-vars': 'my-var-'
@@ -586,7 +586,7 @@ There are a couple of handy functions that give you access to configuration sett
 
 `get-color($key: string)`
 
-Takes the passed `$key` and attempts to retrieve a match from `$gorko-colors`.
+Takes the passed `$key` and attempts to retrieve a match from `$forko-colors`.
 
 #### Example
 
@@ -614,7 +614,7 @@ font-weight: get-utility-value('weight', 'light'); // 300
 
 `get-size($ratio-key: string)`
 
-Tries to match the passed `$ratio-key` with the `$gorko-size-scale`. Returns null if it can’t find a match.
+Tries to match the passed `$ratio-key` with the `$forko-size-scale`. Returns null if it can’t find a match.
 
 #### Example
 
@@ -630,7 +630,7 @@ $my-size: get-size('500'); // 1.25rem
 
 `apply-utility($key: string, $value-key: string)`
 
-Grab the property and value of one of the `$gorko-config` utilities that the generator will generate a class for.
+Grab the property and value of one of the `$forko-config` utilities that the generator will generate a class for.
 
 #### Example
 
@@ -646,7 +646,7 @@ Using the default config:
 
 `media-query($key: string)`
 
-Pass in the key of one of your breakpoints set in `$gorko-config['breakpoints']` and this mixin will generate the media query with your configured value.
+Pass in the key of one of your breakpoints set in `$forko-config['breakpoints']` and this mixin will generate the media query with your configured value.
 
 #### Example
 
