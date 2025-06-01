@@ -17,7 +17,9 @@ $generate-utility-classes: true !default;
   $forko-colors: $forko-colors,
   $forko-size-scale: $forko-size-scale,
 );
-@use './src/mixins/mixins';
+@use './src/mixins/mixins' with (
+  $forko-config: $forko-config,
+);
 @use './src/generator/generator' with (
   $forko-config: $forko-config,
   $generate-css-vars: $generate-css-vars,

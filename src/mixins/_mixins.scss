@@ -1,2 +1,58 @@
-@import 'apply-utility';
-@import 'media-query';
+@use "sass:map";
+@use 'apply-utility';
+@use 'media-query';
+@use '../generator/workers/cycle';
+@use '../generator/workers/get-config-value';
+
+$forko-config: null !default;
+
+/// APPLY UTILITY MIXIN
+/// Grab the property and value of one of the $gorko-config utilities
+/// that the generator will generate a class for.
+///
+/// @param {string} $key - The configured utility’s key
+/// @param {string} $value-key - The value key that you are looking for within the utilty
+///
+@mixin apply-utility($key, $value-key) {
+  $values: get-config-value.get-config-value($key, $value-key);
+
+  @if ($values) {
+    #{map.get($values, 'property')}: map.get($values, 'value');
+  }
+}
+
+/// MEDIA QUERY MIXIN
+/// Pass in the key of one of your breakpoints set in `$forko-config['breakpoints']`
+/// and this mixin will generate the @media query with your configured value.
+///
+/// @param {string} $key - The key of your configured breakpoint
+///
+@mixin media-query($key) {
+  $breakpoints: map.get($forko-config, 'breakpoints');
+  $matched-breakpoint: map.get($breakpoints, $key);
+
+  @if not $matched-breakpoint {
+    @warn #{ 'Breakpoint, ‘' + $key + '’ not found in `$forko-config`. Make sure it’s set in the ‘breakpoints’ section.' };
+  } @else {
+    @media #{ $matched-breakpoint } {
+      @content;
+    }
+  }
+}
+
+/// GENERATE UTILITY CLASSES MIXIN
+/// Runs the utility class generator on demand
+@mixin generate-utility-classes() {
+  /// Run the standard cycle first
+  @include cycle.cycle('', false);
+
+  /// For each breakpoint, generate a prefix and run the cycle
+  @each $key, $value in map.get($forko-config, 'breakpoints') {
+    $prefix: #{$key + '\\:'};
+    $is-breakpoint: true;
+
+    @media #{$value} {
+      @include cycle.cycle($prefix, $is-breakpoint);
+    }
+  }
+}
