@@ -1,17 +1,21 @@
+@use 'sass:map';
+
+$forko-colors: null !default;
+
 /// GET COLOR FUNCTION
-/// Function tries to match the passed $key with the $gorko-colors map. Returns null
+/// Function tries to match the passed $key with the $forko-colors map. Returns null
 /// if it can’t find a match.
 ///
 /// @param {string} $key - The color that you want to get
 ///
 @function get-color($key) {
-  $response: map-get($gorko-colors, $key);
+  $response: map.get($forko-colors, $key);
 
   @if ($response) {
     @return $response;
   }
 
-  @warn #{'Color "' + $key + '" not found in $gorko-colors'};
+  @warn #{'Color "' + $key + '" not found in $forko-colors'};
 
   @return null;
 }

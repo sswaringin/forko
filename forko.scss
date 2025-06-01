@@ -6,18 +6,25 @@
 
 /// Allow user to override the config
 $forko-config: default-config.$forko-config !default;
+$forko-colors: default-config.$forko-colors !default;
+$forko-size-scale: default-config.$forko-size-scale !default;
 
 /// Set default feature flags
 $generate-css-vars: true !default;
 $generate-utility-classes: true !default;
 
-@use './src/functions/functions';
+@use './src/functions/functions' with (
+  $forko-colors: $forko-colors,
+  $forko-size-scale: $forko-size-scale,
+);
 @use './src/mixins/mixins';
 @use './src/generator/generator' with (
   $forko-config: $forko-config,
   $generate-css-vars: $generate-css-vars,
   $generate-utility-classes: $generate-utility-classes,
 );
+
+// @debug ('💩💩💩', $forko-colors);
 
 // Support old features
 @if (meta.variable-exists(outputTokenCSS)) {

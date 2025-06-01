@@ -1,18 +1,22 @@
+@use 'sass:map';
+
+$forko-size-scale: null !default;
+
 /// GET SIZE FUNCTION
 ///
-/// Function tries to match the passed $ratio-key with the $gorko-size-scale. Returns null
+/// Function tries to match the passed $ratio-key with the $forko-size-scale. Returns null
 /// if it can’t find a match.
 ///
 /// @param {string} $ratio-key - The size ratio that you want to get
 ///
 @function get-size($ratio-key) {
-  $response: map-get($gorko-size-scale, $ratio-key);
+  $response: map.get($forko-size-scale, $ratio-key);
 
   @if ($response) {
     @return $response;
   }
 
-  @warn #{'Size "' + $ratio-key + '" not found in $gorko-size-scale'};
+  @warn #{'Size "' + $ratio-key + '" not found in $forko-size-scale'};
 
   @return null;
 }
