@@ -1,17 +1,26 @@
+@use 'sass:meta';
+
 /// Import the default config as the fallback for if
 /// the user hasn't yet set a config for their project
-@import './src/default-config';
+@use './src/default-config';
+
+/// Allow user to override the config
+$forko-config: default-config.$forko-config !default;
 
 /// Set default feature flags
 $generate-css-vars: true !default;
 $generate-utility-classes: true !default;
 
+@use './src/functions/functions';
+@use './src/mixins/mixins';
+@use './src/generator/generator' with (
+  $forko-config: $forko-config,
+  $generate-css-vars: $generate-css-vars,
+  $generate-utility-classes: $generate-utility-classes,
+);
+
 // Support old features
-@if (variable-exists(outputTokenCSS)) {
+@if (meta.variable-exists(outputTokenCSS)) {
   @warn '$outputTokenCSS is deprecated. Please use $generate-utility-classes instead';
   $generate-utility-classes: $outputTokenCSS;
 }
-
-@import './src/functions/functions';
-@import './src/mixins/mixins';
-@import './src/generator/generator';
