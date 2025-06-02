@@ -1,11 +1,13 @@
 @use 'config';
 
-@use '../forko.scss';
+@use '../forko' with (
+  $forko-colors: config.$forko-colors,
+);
 
 /// A TESTING GROUND FOR FEATURES. MAKE SURE IT'S CLEAR AFTER HERE BEFORE PUSHING
 
 body {
-  font-size: get-utility-value('text', '900');
-  // background: get-config-value('color', 'blush');
+  // font-size: forko.get-utility-value('text', '900');
+  background: forko.get-color('blush');
   // @include apply-utility('color', 'blush');
 }

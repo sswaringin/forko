@@ -9,4 +9,4 @@ $forko-size-scale: null !default;
   $forko-size-scale: $forko-size-scale,
 );
 
-@use 'get-utility-value';
+@forward 'get-utility-value';
