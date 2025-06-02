@@ -1,6 +1,6 @@
 {
   "name": "forko",
-  "version": "0.9.1",
+  "version": "0.9.3",
   "description": "A tiny Sass token class generator.",
   "main": "forko.scss",
   "dependencies": {

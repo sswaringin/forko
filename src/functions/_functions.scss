@@ -1,11 +1,11 @@
 $forko-colors: null !default;
 $forko-size-scale: null !default;
 
-@use 'get-color' with (
+@forward 'get-color' with (
   $forko-colors: $forko-colors,
 );
 
-@use 'get-size' with (
+@forward 'get-size' with (
   $forko-size-scale: $forko-size-scale,
 );
 

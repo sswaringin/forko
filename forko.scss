@@ -2,7 +2,7 @@
 
 /// Import the default config as the fallback for if
 /// the user hasn't yet set a config for their project
-@use './src/default-config';
+@use 'src/default-config';
 
 /// Allow user to override the config
 $forko-config: default-config.$forko-config !default;
@@ -13,20 +13,18 @@ $forko-size-scale: default-config.$forko-size-scale !default;
 $generate-css-vars: true !default;
 $generate-utility-classes: true !default;
 
-@use './src/functions/functions' with (
+@forward 'src/functions/functions' with (
   $forko-colors: $forko-colors,
   $forko-size-scale: $forko-size-scale,
 );
-@use './src/mixins/mixins' with (
+@use 'src/mixins/mixins' with (
   $forko-config: $forko-config,
 );
-@use './src/generator/generator' with (
+@use 'src/generator/generator' with (
   $forko-config: $forko-config,
   $generate-css-vars: $generate-css-vars,
   $generate-utility-classes: $generate-utility-classes,
 );
-
-// @debug ('💩💩💩', $forko-colors);
 
 // Support old features
 @if (meta.variable-exists(outputTokenCSS)) {
